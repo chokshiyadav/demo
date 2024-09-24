@@ -1,12 +1,12 @@
 ---
-- name: Pull Docker Image of ScientificCalculator
+- name: Pull Docker Image of scientificcalculator
   hosts: all
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Pull image
       docker_image:
-        name: chokshi/ScientificCalculator:latest
+        name: chokshi/scientificcalculator:latest
         source: pull
 
     - name: Start docker service
@@ -15,6 +15,6 @@
         state: started
 
     - name: Running container
-      shell: docker run -it -d --name ScientificCalculator chokshi/ScientificCalculator
+      shell: docker run -it -d --name scientificcalculator chokshi/ScientificCalculator
       args:
         executable: /bin/bash
