@@ -15,6 +15,6 @@
         state: started
 
     - name: Running container
-      shell: docker run -it -d --name scientificcalculator chokshi/ScientificCalculator
+      shell: docker run -it -d --name scientificcalculator chokshi/scientificcalculator
       args:
         executable: /bin/bash
