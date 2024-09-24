@@ -1,4 +1,11 @@
+# Use an official OpenJDK runtime as a parent image
 FROM openjdk:11
-COPY ./target/Calculator-1.0-SNAPSHOT-jar-with-dependencies.jar./
-WORKDIR ./
-CMD ["java","-cp","ScientificCalculator-1.0-SNAPSHOT-jar-withdependencies.jar","org.example.Main"]
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the JAR file from the target directory on the host to the container
+COPY ./target/Calculator-1.0-SNAPSHOT-jar-with-dependencies.jar ./ScientificCalculator-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+# Command to run the JAR file
+CMD ["java", "-cp", "ScientificCalculator-1.0-SNAPSHOT-jar-with-dependencies.jar", "org.example.Main"]
