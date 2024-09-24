@@ -5,7 +5,7 @@ FROM openjdk:11
 WORKDIR /app
 
 # Copy the JAR file from the target directory on the host to the container
-COPY ./target/Calculator-1.0-SNAPSHOT-jar-with-dependencies.jar ./ScientificCalculator-1.0-SNAPSHOT-jar-with-dependencies.jar
+COPY ./target/ScientificCalculator-1.0-SNAPSHOT-jar-with-dependencies.jar ./ScientificCalculator-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 # Command to run the JAR file
 CMD ["java", "-cp", "ScientificCalculator-1.0-SNAPSHOT-jar-with-dependencies.jar", "org.example.Main"]
