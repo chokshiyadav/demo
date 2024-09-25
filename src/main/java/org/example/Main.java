@@ -26,7 +26,7 @@ public class Main {
                     System.out.print("Enter a number: ");
                     num1 = scanner.nextDouble();
                     if (num1 >= 0) {
-                        result = Math.sqrt(num1);
+                        result = squareRoot(num1);
                         System.out.println("√" + num1 + " = " + result);
                     } else {
                         System.out.println("Error! Cannot calculate square root of a negative number.");
@@ -50,7 +50,7 @@ public class Main {
                     System.out.print("Enter a number: ");
                     num1 = scanner.nextDouble();
                     if (num1 > 0) {
-                        result = Math.log(num1);
+                        result = naturalLog(num1);
                         System.out.println("ln(" + num1 + ") = " + result);
                     } else {
                         System.out.println("Error! Natural logarithm is not defined for non-positive numbers.");
@@ -63,7 +63,7 @@ public class Main {
                     num1 = scanner.nextDouble();
                     System.out.print("Enter the exponent (b): ");
                     num2 = scanner.nextDouble();
-                    result = Math.pow(num1, num2);
+                    result = power(num1, num2);
                     System.out.println(num1 + "^" + num2 + " = " + result);
                     break;
 
@@ -87,5 +87,20 @@ public class Main {
             return 1;
         }
         return n * factorial(n - 1);
+    }
+
+    // Square root method
+    public static double squareRoot(double num) {
+        return Math.sqrt(num);
+    }
+
+    // Natural logarithm method
+    public static double naturalLog(double num) {
+        return Math.log(num);
+    }
+
+    // Power function
+    public static double power(double base, double exponent) {
+        return Math.pow(base, exponent);
     }
 }
