@@ -1,20 +1,31 @@
 ---
-- name: Pull Docker Image of scientificcalculator
+- name: Pull Docker Image of scientific calculator from Docker Hub
   hosts: localhost
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
+  connection: local
+  become: false
   tasks:
-    - name: Pull image
+    - name: Pull Docker Image
       docker_image:
-        name: chokshi/scientificcalculator:latest
+        name: "chokshi/scientificcalculator"
         source: pull
+      register: docker_pull_result
 
-    - name: Start docker service
+    - name: Display Docker Pull Result
+      debug:
+        var: docker_pull_result
+
+    - name: Start Docker service
       service:
         name: docker
         state: started
 
-    - name: Running container
+    - name: Stop all running containers
+      shell: docker ps -q | xargs --no-run-if-empty docker stop
+      ignore_errors: true
+
+    - name: Remove all stopped containers
+      shell: docker ps -a -q | xargs --no-run-if-empty docker rm
+      ignore_errors: true
+
+    - name: Run scientific calculator container
       shell: docker run -it -d --name scientificcalculator chokshi/scientificcalculator
-      args:
-        executable: /bin/bash
